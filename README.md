@@ -5,8 +5,8 @@ I got the current adp for sleeper from the post/google sheets above rankings are
 If they decide to update it grab a new one from there and save it in the folder renamed as "Sleeper ADP.xlsx"
 
 step 1:
-  run fantasy_pros_data.py to pull data from a few experts that I was able to see with individuals ranking available.
-  the url I pulled the data from looked like this
+run fantasy_pros_data.py to pull data from a few experts that I was able to see with individuals ranking available.
+the url I pulled the data from looked like this
   https://www.fantasypros.com/nfl/rankings/pat-fitzmaurice.php?type=dynasty&scoring=PPR&position=OP
   if you would like rankings other than dynasty you would need to find the correct url and replace it in the .py file (probably just replaceing "dynasty" and "PPR")
   this will update the excel file "rankings.xlsx"
