@@ -323,7 +323,7 @@ def clean_data(value, draft_id, my_username):
         players_drafted = pd.DataFrame(columns=['player', 'tier', 'player_id'])
 
     try:
-        my_user_id = league_users['user_id'][league_users['display_name'].str.lower().str.strip() == my_username.lower().strip()][0]
+        my_user_id = league_users['user_id'][league_users['display_name'].str.lower().str.strip() == my_username.lower().strip()].iloc[0]
         current_pick = len(players_drafted)
 
         next_round = draft_order_picks.iloc[current_pick + 1:]
