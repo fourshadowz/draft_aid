@@ -157,7 +157,7 @@ dataframe = dataframe[(dataframe['player'] != 'Alex Smith ') | (dataframe['posit
 dataframe= dataframe.reset_index(drop=True)
 dataframe= dataframe.reset_index()
 dataframe = dataframe.rename(columns={'index':'ranking_draft_order'})
-dataframe['value'] = dataframe['ranking_draft_order'] - dataframe['adp']
+dataframe['value'] = dataframe['ranking_draft_order'] - dataframe['adp'] + 1
 dataframe['value'] = dataframe['value'].round(2)
 
 
