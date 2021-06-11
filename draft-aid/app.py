@@ -427,8 +427,8 @@ def network_graph(players_dict, position_select):
 
     dataframe = position_select_dataframes[position_select][:50]
     #dataframe = scope_dataframes[networkScope]
-    best_ranks = dataframe['best'].astype(int).tolist()[::-1]
-    worst_ranks = dataframe['rank_diff'].astype(int).tolist()[::-1]
+    best_ranks = dataframe['best'].tolist()[::-1]
+    worst_ranks = dataframe['rank_diff'].tolist()[::-1]
     average_ranks = dataframe['avg_plot'].tolist()[::-1]
     players = dataframe['player'].tolist()[::-1]
     
