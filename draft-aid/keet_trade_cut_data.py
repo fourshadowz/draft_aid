@@ -27,6 +27,10 @@ keeptradecut_rank['team'] = keeptradecut_rank['team'].apply(lambda x: team_renam
 keeptradecut_rank['drop'] = keeptradecut_rank['playerName'].apply(lambda x: x[:4].isdigit())
 keeptradecut_rank = keeptradecut_rank[keeptradecut_rank['drop'] == False]
 
+keeptradecut_rank = keeptradecut_rank.reset_index(drop=True)
+keeptradecut_rank = keeptradecut_rank.reset_index()
+keeptradecut_rank['rank'] = keeptradecut_rank['index'] + 1
+
 keeptradecut_rank['best'] = keeptradecut_rank['rank'] - 1
 keeptradecut_rank['worst'] = keeptradecut_rank['rank'] + 1
 keeptradecut_rank['avg'] = keeptradecut_rank['rank']
