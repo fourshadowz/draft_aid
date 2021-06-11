@@ -145,7 +145,8 @@ dataframe = pd.merge(dataframe, adp[['adp', 'player_merge']], how='left', on=['p
 
 dataframe['adp'] = dataframe.apply(lambda x: x['adp_x'] if pd.isnull(x['adp_x']) == False else x['adp_y'], axis=1)
   
-
+dataframe['full_name'] = dataframe.apply(lambda x: x['full_name'] if pd.isnull(x['full_name']) == False else x['player'], axis=1)
+  
 dataframe = dataframe[['rank', 'full_name', 'team', 'best', 'worst', 'avg', 'stddev', 'tier', 'colors', 'position', 'player_id', 'adp']]
 dataframe = dataframe.rename(columns={'full_name':'player'})
 dataframe['rank_diff'] = dataframe['worst'] - dataframe['best']
