@@ -152,14 +152,15 @@ dataframe = dataframe.rename(columns={'full_name':'player'})
 dataframe['rank_diff'] = dataframe['worst'] - dataframe['best']
 dataframe['avg_plot'] = dataframe['avg'] - .5
 dataframe['pick'] =  dataframe['adp']
+dataframe = dataframe.drop_duplicates()
+dataframe = dataframe[(dataframe['player'] != 'Alex Smith ') | (dataframe['position'] != 'TE')]
 dataframe= dataframe.reset_index(drop=True)
 dataframe= dataframe.reset_index()
 dataframe = dataframe.rename(columns={'index':'ranking_draft_order'})
 dataframe['value'] = dataframe['ranking_draft_order'] - dataframe['adp']
 dataframe['value'] = dataframe['value'].round(2)
 
-dataframe = dataframe.drop_duplicates()
-dataframe = dataframe[(dataframe['player'] != 'Alex Smith ') | (dataframe['position'] != 'TE')]
+
 
 with pd.ExcelWriter('draft_tiers.xlsx') as writer:  
     dataframe.to_excel(writer, sheet_name='all_players', index=False)
