@@ -151,9 +151,12 @@ dataframe = dataframe[['rank', 'full_name', 'team', 'best', 'worst', 'avg', 'std
 dataframe = dataframe.rename(columns={'full_name':'player'})
 dataframe['rank_diff'] = dataframe['worst'] - dataframe['best']
 dataframe['avg_plot'] = dataframe['avg'] - .5
-dataframe['value'] = dataframe['avg'] - dataframe['adp']
-dataframe['value'] = dataframe['value'].round(2)
 dataframe['pick'] =  dataframe['adp']
+dataframe= dataframe.reset_index(drop=True)
+dataframe= dataframe.reset_index()
+dataframe = dataframe.rename(columns={'index':'ranking_draft_order'})
+dataframe['value'] = dataframe['ranking_draft_order'] - dataframe['adp']
+dataframe['value'] = dataframe['value'].round(2)
 
 dataframe = dataframe.drop_duplicates()
 dataframe = dataframe[(dataframe['player'] != 'Alex Smith ') | (dataframe['position'] != 'TE')]
