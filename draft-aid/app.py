@@ -34,6 +34,7 @@ league_picks['user_id'] = league_picks['user_id'].astype(str)
 players_all_initial['player'][players_all_initial['player'].isin(my_guys['player'].to_list())] = '****   ' + players_all_initial['player'] + '  ****'
 league_users = league_picks[['user_id', 'display_name']].drop_duplicates()
 unique_colors = players_all_initial[['tier', 'colors']].drop_duplicates()
+players_all_initial['player'] = '  ' + players_all_initial['player']
  
 
 app.layout = html.Div([
