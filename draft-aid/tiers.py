@@ -114,6 +114,12 @@ dataframe['team'][dataframe['team'] == 'JAC'] = 'JAX'
 sleeper['player_merge'][sleeper['player_merge'] == 'scott miller'] = 'scotty miller'
 sleeper['player_merge'][sleeper['player_merge'] == 'christopher herndon'] = 'chris herndon'
 sleeper['player_merge'][sleeper['player_merge'] == 'jeffery wilson'] = 'jeff wilson'
+sleeper['player_merge'][sleeper['player_merge'] == "la'mical perine"] = 'lamical perine'
+
+dataframe['player_merge'][dataframe['player_merge'] == 'scott miller'] = 'scotty miller'
+dataframe['player_merge'][dataframe['player_merge'] == 'christopher herndon'] = 'chris herndon'
+dataframe['player_merge'][dataframe['player_merge'] == 'jeffery wilson'] = 'jeff wilson'
+dataframe['player_merge'][dataframe['player_merge'] == "la'mical perine"] = 'lamical perine'
 
 dataframe = pd.merge(dataframe, sleeper[['position', 'player_id', 'team', 'player_merge', 'full_name']], how='left', on=['player_merge', 'team'])
 dataframe = pd.merge(dataframe, sleeper[['position', 'player_id', 'team', 'player_merge', 'full_name']], how='left', on=['player_merge'])
@@ -146,8 +152,8 @@ dataframe = pd.merge(dataframe, adp[['adp', 'player_merge']], how='left', on=['p
 dataframe['adp'] = dataframe.apply(lambda x: x['adp_x'] if pd.isnull(x['adp_x']) == False else x['adp_y'], axis=1)
   
 dataframe['full_name'] = dataframe.apply(lambda x: x['full_name'] if pd.isnull(x['full_name']) == False else x['player'], axis=1)
-  
-dataframe = dataframe[['rank', 'full_name', 'team', 'best', 'worst', 'avg', 'stddev', 'tier', 'colors', 'position', 'player_id', 'adp']]
+
+dataframe = dataframe[['full_name', 'team', 'best', 'worst', 'avg', 'stddev', 'tier', 'colors', 'position', 'player_id', 'adp']]
 dataframe = dataframe.rename(columns={'full_name':'player'})
 dataframe['rank_diff'] = dataframe['worst'] - dataframe['best']
 dataframe['avg_plot'] = dataframe['avg'] - .5
@@ -159,6 +165,7 @@ dataframe= dataframe.reset_index()
 dataframe = dataframe.rename(columns={'index':'ranking_draft_order'})
 dataframe['value'] = dataframe['ranking_draft_order'] - dataframe['adp'] + 1
 dataframe['value'] = dataframe['value'].round(2)
+
 
 
 
